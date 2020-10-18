@@ -1,0 +1,74 @@
+version: "2"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/0-dump.sql
+      - ./normalized/questions.sql:/docker-entrypoint-initdb.d/1-normalized_questions.sql
+      - ./denormalized/questions.sql:/docker-entrypoint-initdb.d/1-denormalized_questions.sql
+
+  postgres_1:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/0-dump.sql
+      - ./normalized/questions.sql:/docker-entrypoint-initdb.d/1-normalized_questions.sql
+      - ./normalized/index_1.sql:/docker-entrypoint-initdb.d/2-normalized_questions-index.sql
+      - ./denormalized/questions.sql:/docker-entrypoint-initdb.d/1-denormalized_questions.sql
+      - ./denormalized/index_1.sql:/docker-entrypoint-initdb.d/2-denormalized_questions-index.sql
+
+  postgres_2:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/0-dump.sql
+      - ./normalized/questions.sql:/docker-entrypoint-initdb.d/1-normalized_questions.sql
+      - ./normalized/index_2.sql:/docker-entrypoint-initdb.d/2-normalized_questions-index.sql
+      - ./denormalized/questions.sql:/docker-entrypoint-initdb.d/1-denormalized_questions.sql
+      - ./denormalized/index_2.sql:/docker-entrypoint-initdb.d/2-denormalized_questions-index.sql
+
+  postgres_3:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/0-dump.sql
+      - ./normalized/questions.sql:/docker-entrypoint-initdb.d/1-normalized_questions.sql
+      - ./normalized/index_3.sql:/docker-entrypoint-initdb.d/2-normalized_questions-index.sql
+      - ./denormalized/questions.sql:/docker-entrypoint-initdb.d/1-denormalized_questions.sql
+      - ./denormalized/index_3.sql:/docker-entrypoint-initdb.d/2-denormalized_questions-index.sql
+
+  postgres_4:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/0-dump.sql
+      - ./normalized/questions.sql:/docker-entrypoint-initdb.d/1-normalized_questions.sql
+      - ./normalized/index_4.sql:/docker-entrypoint-initdb.d/2-normalized_questions-index.sql
+      - ./denormalized/questions.sql:/docker-entrypoint-initdb.d/1-denormalized_questions.sql
+      - ./denormalized/index_4.sql:/docker-entrypoint-initdb.d/2-denormalized_questions-index.sql

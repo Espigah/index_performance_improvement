@@ -1,0 +1,5 @@
+dump.sql
+.history
+.vscode
+__pycache__
+*.log
